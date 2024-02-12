@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "smc-gui"
+version = "0.1.2"
+description = "A simple GUI for spectre-meltdown-checker"
+authors = ["Michael John <michael.john@gmx.at>"]
+readme = "README.md"
+license = "GPL"
+packages = [{include = "smc_gui"}]
+include = ["CHANGELOG.md", "README.md", "smc_gui.ui", "smc_gui.ico"]
+
+[tool.poetry.scripts]
+smc_gui = 'smc_gui.__main__:main'
+smc-gui = 'smc_gui.__main__:main'
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.13"
+# pyside6 = "^6.4.2"
+pyside6 = ">=6.2"
+# pyside6-essentials = "^6.4.2"
+
+[tool.poetry.dev-dependencies]
+pyside6 = "^6.4.2"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+homepage = "https://github.com/amstelchen/smc_gui"
+repository = "https://github.com/amstelchen/smc_gui"
+documentation = "https://github.com/amstelchen/smc_gui"

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1187</width>
+    <height>661</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QGroupBox {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #E0E0E0, stop: 1 #FFFFFF);
+    border: 2px solid gray;
+    border-radius: 3px;
+    margin-top: 1ex; /* leave space at the top for the title */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left; /* position at the top center */
+    padding: 0 3px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="Details">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>100</y>
+      <width>561</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Details</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <widget class="QLabel" name="label_Details">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>541</width>
+       <height>481</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;CVE-2017-5753 aka 'Spectre Variant 1, bounds check bypass'&lt;/span&gt;&lt;/p&gt;&lt;p&gt;* Mitigated according to the /sys interface: YES (Mitigation: usercopy/swapgs barriers and __user pointer sanitization)&lt;/p&gt;&lt;p&gt;* Kernel has array_index_mask_nospec: NO &lt;/p&gt;&lt;p&gt;* Kernel has the Red Hat/Ubuntu patch: NO &lt;/p&gt;&lt;p&gt;* Kernel has mask_nospec64 (arm64): NO &lt;/p&gt;&lt;p&gt;* Kernel has array_index_nospec (arm64): NO &lt;/p&gt;&lt;p&gt;* Checking count of LFENCE instructions following a jump in kernel... NO (only 26 jump-then-lfence instructions found, should be &amp;gt;= 30 (heuristic))&lt;/p&gt;&lt;p&gt;&amp;gt; &lt;span style=&quot; font-weight:700; background-color:#00ffff;&quot;&gt;STATUS:&lt;/span&gt;&lt;span style=&quot; font-weight:700; background-color:#32cd32;&quot;&gt;NOT VULNERABLE&lt;/span&gt; (Mitigation: usercopy/swapgs barriers and __user pointer sanitization)&lt;/p&gt;&lt;p&gt;(Above is &lt;span style=&quot; font-weight:700; font-style:italic;&quot;&gt;EXAMPLE OUTPUT&lt;/span&gt; - please open an existing result file, or run spectre-meltdown-checker.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::RichText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="Vulnerabilities">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>601</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Vulnerabilities</string>
+    </property>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>581</width>
+       <height>481</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="Systeminfo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>1091</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>System information</string>
+    </property>
+    <widget class="QLabel" name="label_Systeminfo">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>1051</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>15</y>
+      <width>64</width>
+      <height>64</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../../data/Projekte/smc-gui/smc_gui/smc_gui.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1187</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_Run_checker"/>
+    <addaction name="action_Open_file"/>
+    <addaction name="action_Exit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_Visit"/>
+    <addaction name="action_About"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Run_checker">
+   <property name="text">
+    <string>&amp;Run spectre-meltdown-checker</string>
+   </property>
+  </action>
+  <action name="action_Open_file">
+   <property name="text">
+    <string>&amp;Open existing result file...</string>
+   </property>
+  </action>
+  <action name="action_Exit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+  </action>
+  <action name="actionEdit_mod">
+   <property name="text">
+    <string>Edit mod description and credits</string>
+   </property>
+  </action>
+  <action name="actionEdit_level_intro_text">
+   <property name="text">
+    <string>Edit level intro text</string>
+   </property>
+  </action>
+  <action name="actionEdit_level_objectives">
+   <property name="text">
+    <string>Edit level objectives</string>
+   </property>
+  </action>
+  <action name="actionEdit_level_messages">
+   <property name="text">
+    <string>Edit level messages</string>
+   </property>
+  </action>
+  <action name="action_Visit">
+   <property name="text">
+    <string>Visit the GitHub repo</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::TextHeuristicRole</enum>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
