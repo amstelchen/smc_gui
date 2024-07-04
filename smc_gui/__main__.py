@@ -1,6 +1,7 @@
 # File: main.py
 import sys
 import os
+import shutil
 # import xdg
 import subprocess
 import logging
@@ -16,7 +17,7 @@ from PySide6.QtGui import QIcon
 
 TOOL = "spectre-meltdown-checker"
 PROG = "spectre-meltdown-checker GUI"
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 AUTHOR = "Copyright (C) 2023, 2024, by Michael John"
 DESC = "A simple GUI for spectre-meltdown-checker"
 GithubLink = "https://github.com/amstelchen/smc_gui"
@@ -38,6 +39,10 @@ QGroupBox::title {
 }"""
 
 def main():
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'DEBUG':
+            logging.basicConfig(level=logging.DEBUG)
+
     ResultFilePath = "/tmp/smc_output_nohw.txt"
     data = {}
 
@@ -85,6 +90,9 @@ def main():
             logging.debug(f"There were a total of {cve_count} CVEs found in the file.")
 
     def action_Run_checker_clicked(s):
+        window.label_Systeminfo.setText(window.label_Systeminfo.text() + f"\nRunning {TOOL}. Please wait for it to complete.")
+        window.label_Systeminfo.update()
+        logging.debug(f"\nRunning {TOOL}. Please wait for it to complete.")
         try:
             with open(ResultFilePath, "wt") as result_file:
                 subprocess.run(["pkexec", TOOL, "--no-color", "--no-hw"], stdout=result_file) # capture_output=True
@@ -121,7 +129,15 @@ def main():
         window.label_Details.setText('<b>' + cve_title + '</b><p>' + cve_data)
     
     def CheckUpdate():
+        global TOOL
+
         window.label_Systeminfo.setText("Checking for latest version of spectre-meltdown-checker...")
+        if not shutil.which(TOOL) and not shutil.which(TOOL + '.sh'):
+            window.label_Systeminfo.setText(window.label_Systeminfo.text() + f"\n{TOOL} not found in PATH. Giving up.")
+            return -1
+        if shutil.which(TOOL + '.sh'):
+            TOOL += '.sh'
+            pass
         installed = subprocess.run(["sh", "-c", "grep '^VERSION' $(which " + TOOL + ")"], capture_output=True).stdout.decode('utf-8').split('=')[1].strip()
         contents = urllib.request.urlopen("https://meltdown.ovh").read().decode('utf-8')
         for line in contents.split('\n'):
